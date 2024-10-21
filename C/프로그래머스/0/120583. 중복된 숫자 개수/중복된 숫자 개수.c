@@ -6,9 +6,9 @@
 int solution(int array[], size_t array_len, int n) {
     int i = 0;
     int answer = 0;
-    for(; i <= array_len - 1; i++){
+    for(; i < array_len; i++){
         if(array[i] == n){
-            answer += 1;
+            answer ++;
         }
     }
     return answer;
