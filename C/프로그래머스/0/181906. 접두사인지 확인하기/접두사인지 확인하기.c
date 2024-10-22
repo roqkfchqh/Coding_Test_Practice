@@ -6,13 +6,9 @@
 int solution(const char* my_string, const char* is_prefix) {
     int answer = 1;
     int i = 0;
-    int l = 0;
     for(; is_prefix[i]; i++){
         if(is_prefix[i] != my_string[i]) answer = 0;
     }
-    while(my_string[l]){
-        l++;
-    }
-    if(i > l) answer = 0;
+    if(strlen(is_prefix) > strlen(my_string)) answer = 0;
     return answer;
 }
