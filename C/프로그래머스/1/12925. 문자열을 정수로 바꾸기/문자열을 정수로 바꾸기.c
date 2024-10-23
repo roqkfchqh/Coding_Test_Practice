@@ -7,22 +7,19 @@
 int solution(const char* s) {
     int len = strlen(s);
     int i = 0;
-    int j = pow(10, len - 1);
     int answer = 0;
-    
-    if(s[0] == '+' || s[0] == '-'){   
-        i++;
-        j = j / 10;
-    }
-    
-    for(; i < len; i++){
-        answer += j * (s[i] - 48);
-        j = j / 10;
-    }
-    
+    int sign = 1;
+
     if(s[0] == '-'){
-        answer =- answer;
+        sign = -1;
+        i++;
+    } else if(s[0] == '+'){
+        i++;
     }
-    
-    return answer;
+
+    for(; i < len; i++){
+        answer = answer * 10 + (s[i] - '0');
+    }
+
+    return sign * answer;
 }
