@@ -13,7 +13,6 @@ char* solution(const char* my_string, const char* letter) {
         if(my_string[i] == letter[0]){
             continue;
         }
-        if(!my_string[i]) break;
         answer[j] = my_string[i];
         j++;
     }
