@@ -7,18 +7,12 @@ bool can_transport(long long mid, int a, int b, int g[], int s[], int w[], int t
 
     for(int i = 0; i < t_len; i++){
         long long max_trips = mid / (2 * t[i]);
+        if(mid >= t[i] * (2 * max_trips + 1)) max_trips++;
         long long max_transport = max_trips * w[i];
         
         long long available_gold = (g[i] < max_transport) ? g[i] : max_transport;
         long long available_silver = (s[i] < max_transport) ? s[i] : max_transport;
         long long available_combined = (g[i] + s[i] < max_transport) ? g[i] + s[i] : max_transport;
-
-        if(mid >= t[i] * (2 * max_trips + 1)){
-            long long extra_transport = w[i];
-            available_gold = (g[i] < max_transport + extra_transport) ? g[i] : max_transport + extra_transport;
-            available_silver = (s[i] < max_transport + extra_transport) ? s[i] : max_transport + extra_transport;
-            available_combined = (g[i] + s[i] <= max_transport + extra_transport) ? g[i] + s[i] : max_transport + extra_transport;
-        }
 
         total_gold += available_gold;
         total_silver += available_silver;
