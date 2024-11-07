@@ -12,18 +12,17 @@ char* solution(const char* s) {
     for (int i = 0; i < s_len; i++) {
         temp[i] = s[i];
     }
-    temp[s_len] = '\0';
 
-    for (int i = 0; i < s_len - 1; i++) {
-        for (int j = 0; j < s_len - i - 1; j++) {
-            if (temp[j] < temp[j + 1]) {
+    for(int i = 0; i < s_len - 1; i++){
+        for(int j = 0; j < s_len - i - 1; j++){
+            if(temp[j] < temp[j + 1]){
                 char swap = temp[j];
                 temp[j] = temp[j + 1];
                 temp[j + 1] = swap;
             }
         }
     }
-    
+    temp[s_len] = '\0';
     strcpy(answer, temp);
     free(temp);
 
